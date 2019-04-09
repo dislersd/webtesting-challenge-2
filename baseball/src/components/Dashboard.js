@@ -6,8 +6,8 @@ const Dashboard = props => {
     <>
     <button onClick={props.strike}>Strike</button>
     <button onClick={props.ball}>Ball</button>
-    <button >Hit</button>
-    <button >Foul</button>
+    <button onClick={props.hit}>Hit</button>
+    <button onClick={props.foul}>Foul</button>
     </>
   )
 }
