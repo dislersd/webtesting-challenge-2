@@ -4,10 +4,10 @@ const Dashboard = props => {
   
   return (
     <>
-    <button>Strike</button>
-    <button>Ball</button>
-    <button>Hit</button>
-    <button>Foul</button>
+    <button onClick={props.strike}>Strike</button>
+    <button onClick={props.ball}>Ball</button>
+    <button >Hit</button>
+    <button >Foul</button>
     </>
   )
 }
