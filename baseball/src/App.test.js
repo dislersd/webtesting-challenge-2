@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { render, fireEvent, cleanup} from "react-testing-library";
 import 'jest-dom/extend-expect'
+import Dashboard from "./components/Dashboard";
 
 afterEach(cleanup)
 
@@ -29,10 +30,23 @@ describe("<App/>", () => {
         const { getByText, debug} = render(<App />);
         const button = getByText(/strike/i)
         fireEvent.click(button)
-        debug();
-        getByText(/strikes: 1/i)
+        fireEvent.click(button)
+        fireEvent.click(button)
+        getByText(/strikes: 0/i)
       })
-
+      it("strikes go to two", () => {
+        const { getByText, debug} = render(<App />);
+        const button = getByText(/strike/i)
+        fireEvent.click(button)
+        fireEvent.click(button)
+        getByText(/strikes: 2/i)
+      })
+      it("click fires an event", () => {
+        const onClick = jest.fn();
+        const { getByText } = render(<Dashboard strike={onClick} />);
+        fireEvent.click(getByText(/strike/i))
+        expect(onClick).toHaveBeenCalled();
+      })
     })
     describe("Balls", () => {
       it("increments ball count", () => {
